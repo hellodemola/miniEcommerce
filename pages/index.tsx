@@ -1,8 +1,6 @@
 import type { NextPage } from 'next';
-import CustomButton from '../components/common/button';
-import FormBox from '../components/common/formBox';
-import TextInput from '../components/common/input';
 import Layout from '../components/common/layout';
+import EmailForm from '../components/forms/emailForm';
 // import getCurrentTime from '../utili/time';
 
 const Home: NextPage = () => (
@@ -24,11 +22,7 @@ const Home: NextPage = () => (
   //   </div>
   // </div>
   <Layout>
-    <FormBox>
-      <TextInput label="Email" type="email" placeholder="name@enyata.com" />
-      <CustomButton>I want some</CustomButton>
-    </FormBox>
-
+    <EmailForm />
   </Layout>
 );
 export default Home;
