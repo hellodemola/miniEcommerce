@@ -1,4 +1,5 @@
 import React from 'react';
+// import Progress from '../progressBar/progress';
 
 type Props = {
   children: any;
@@ -12,6 +13,9 @@ const Layout: React.FC<Props> = ({ children }) => (
         Nut
         <span className="font-normal">Available</span>
       </p>
+      {/* <div>
+        <Progress />
+      </div> */}
       <div>{children}</div>
     </div>
   </div>
