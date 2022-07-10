@@ -1,5 +1,5 @@
 import React from 'react';
-// cgilren should be passed as props
+// chilren should be passed as props
 type Props = {
   children: string;
 };
