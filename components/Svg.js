@@ -50,8 +50,8 @@ export const completed = (
   </svg>
 );
 
-export const checkIcon = (
-  <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="32.1331" cy="32.1331" r="32.1331" fill="#4F46E5" />
+export const editIcon = (
+  <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 24.5426V31H6.45744L25.5026 11.9549L19.0451 5.49743L0 24.5426ZM30.4963 6.96112C31.1679 6.28954 31.1679 5.20469 30.4963 4.53312L26.4669 0.50368C25.7953 -0.167893 24.7105 -0.167893 24.0389 0.50368L20.8877 3.65491L27.3451 10.1123L30.4963 6.96112Z" fill="#D1D5DB" />
   </svg>
 );
