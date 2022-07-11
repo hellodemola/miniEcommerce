@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/common/layout';
 import Progress from '../components/progressBar/progress';
-import { calenderIcon } from '../components/Svg';
+import { calenderIcon, editIcon } from '../components/Svg';
 
 const CheckoutPage = () => {
   const router = useRouter();
@@ -26,9 +26,16 @@ const CheckoutPage = () => {
           </div>
         </div>
 
-        <div className="mt-9">
-          <p className="text-dark font-normal text-2xl">Email</p>
-          <p className="text-4xl font-bold text-black">someone@enyata.com</p>
+        <div className="flex mt-9">
+          <div className="">
+            <p className="text-dark font-normal text-2xl">Email</p>
+            <p className="text-4xl font-bold text-black">someone@enyata.com</p>
+          </div>
+          <div className="ml-28">
+            {editIcon}
+
+          </div>
+
         </div>
 
         <div className="mt-14">
