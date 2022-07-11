@@ -18,6 +18,7 @@ const NumberForm = () => {
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     // Cookies.set('email', input);
+    router.push('/checkout');
   };
   return (
     <FormBox>

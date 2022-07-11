@@ -49,3 +49,9 @@ export const completed = (
     <path d="M21.1696 33.6993L27.4345 39.9642L43.0968 24.3019" stroke="white" strokeWidth="6.2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
+
+export const checkIcon = (
+  <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32.1331" cy="32.1331" r="32.1331" fill="#4F46E5" />
+  </svg>
+);
