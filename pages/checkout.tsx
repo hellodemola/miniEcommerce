@@ -14,7 +14,7 @@ const CheckoutPage = () => {
   return (
     <Layout>
       <Progress />
-      <div className="mt-4 ml-3">
+      <div className="mt-9 ml-3">
         <div className="flex">
           {calenderIcon}
           <div className="ml-3 text-2xl font-thin mt-3">
