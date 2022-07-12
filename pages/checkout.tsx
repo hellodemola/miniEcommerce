@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/common/layout';
 import Progress from '../components/progressBar/progress';
@@ -6,9 +6,36 @@ import { calenderIcon, editIcon } from '../components/Svg';
 
 const CheckoutPage = () => {
   const router = useRouter();
+  const [getEmail, setEmail] = useState([]);
+  const [getName, setName] = useState([]);
+  const [getNumber, setNumber] = useState([]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setEmail(JSON.parse(JSON.stringify(localStorage.getItem('email') || '')));
+    }
+  }, []);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setName(JSON.parse(JSON.stringify(localStorage.getItem('name') || '')));
+    }
+  }, []);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setNumber(JSON.parse(JSON.stringify(localStorage.getItem('number') || '')));
+    }
+  }, []);
+
+  const unitPrice = 1000;
+  const total = unitPrice * +getNumber;
+
+  // }
+
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    // Cookies.set('email', input);
+    localStorage.removeItem('email');
+    localStorage.removeItem('number');
+    localStorage.removeItem('name');
     router.push('/success');
   };
   return (
@@ -29,7 +56,7 @@ const CheckoutPage = () => {
         <div className="flex mt-9">
           <div className="">
             <p className="text-dark font-normal text-2xl">Email</p>
-            <p className="text-4xl font-bold text-black">someone@enyata.com</p>
+            <p className="text-4xl font-bold text-black">{getEmail}</p>
           </div>
           <div className="ml-28">
             {editIcon}
@@ -40,16 +67,16 @@ const CheckoutPage = () => {
 
         <div className="mt-14">
           <p className="text-dark font-normal text-2xl">Name</p>
-          <p className="text-4xl font-bold text-black">someone</p>
+          <p className="text-4xl font-bold text-black">{getName}</p>
         </div>
 
         <div className="mt-14">
           <p className="text-dark font-normal text-2xl">How many nuts?</p>
-          <p className="text-4xl font-bold text-black">2</p>
+          <p className="text-4xl font-bold text-black">{getNumber}</p>
         </div>
 
         <div className="mt-14 flex justify-end">
-          <p className="text-4xl font-bold text-black">2000</p>
+          <p className="text-4xl font-bold text-black">{total}</p>
         </div>
 
         <div className="flex mt-5 pb-48">

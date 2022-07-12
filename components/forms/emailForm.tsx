@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 // import Cookies from 'js-cookie';
 import CustomButton from '../common/button';
@@ -14,9 +14,12 @@ const EmailForm = () => {
     setInput(e.currentTarget.value);
   };
 
+  useEffect(() => {
+    localStorage.setItem('email', input);
+  }, [input]);
+
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    // Cookies.set('email', input);
     router.push('/verify');
   };
 
