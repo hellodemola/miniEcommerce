@@ -4,7 +4,6 @@ type Props = {
   label: string;
   type: string;
   placeholder: string;
-  // register: any;
   value: string;
   onChange: any;
 };
