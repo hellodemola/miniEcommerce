@@ -14,12 +14,16 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.5",
     "@storybook/ember-cli-storybook": "^0.6.0",
+    "axios": "^0.27.2",
+    "evergreen-ui": "^6.10.1",
     "husky": "^8.0.1",
     "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.33.1"
+    "react-hook-form": "^7.33.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
