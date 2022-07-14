@@ -11,7 +11,6 @@ import { updateOrder } from '../../services/endpoints';
 import { numberSchema } from '../../utili/validationschema/validationSchema';
 
 type Inputs = {
-  // number: number,
   number: string,
 };
 
@@ -60,7 +59,6 @@ const NumberForm = () => {
         toaster.danger('Enter a valid quantity');
       });
     localStorage.setItem('number', data.number);
-    // const userEmail = localStorage.getItem('email');
     reset();
   };
 

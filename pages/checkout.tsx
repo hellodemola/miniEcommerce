@@ -103,15 +103,6 @@ const CheckoutPage = () => {
             </div>
 
             <div className="flex mt-5 pb-48">
-              {/* {disable ? (
-                <button
-                  type="submit"
-                  className="cursor-not-allowed bg-violet text-white
-                   h-15 w-77 font-normal text-2xl ml-6 opacity-50 "
-                >
-                  You have an existing order
-                </button>
-              ) : ( */}
               <button
                 type="submit"
                 className="bg-violet text-white h-15 w-77 font-normal
@@ -121,7 +112,6 @@ const CheckoutPage = () => {
                 Pay on Delivery
 
               </button>
-              {/* )} */}
 
             </div>
           </div>
