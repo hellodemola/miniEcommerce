@@ -13,3 +13,21 @@ export const AddUser = async (payload) => apiInstance({
   url: 'users/add',
   data: payload,
 });
+
+export const getDeliveryDate = async () => apiInstance.get('orders/delivery-date');
+
+export const AddOrder = async (payload) => apiInstance({
+  method: 'POST',
+  url: 'orders/add',
+  data: payload,
+});
+
+export const getSingleOrder = async (email) => apiInstance.get(`orders/active?email=${email}`);
+
+export const updateOrder = async (payload) => apiInstance(
+  {
+    method: 'PATCH',
+    url: 'orders/update',
+    data: payload,
+  },
+);
