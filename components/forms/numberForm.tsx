@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,16 +9,16 @@ import TextInput from '../common/input';
 import { backArrow } from '../Svg';
 import { updateOrder } from '../../services/endpoints';
 import { numberSchema } from '../../utili/validationschema/validationSchema';
+import useGetUserHooks from '../../hooks/useGetUserHooks';
 
 type Inputs = {
-  number: string,
+  number: number,
 };
 
 const NumberForm = () => {
   const [loading, setLoading] = useState(false);
-  const [getEmail, setEmail] = useState([]);
-  const [getName, setName] = useState([]);
   const router = useRouter();
+  const { email, name } = useGetUserHooks();
 
   const {
     register,
@@ -29,23 +29,12 @@ const NumberForm = () => {
     },
   } = useForm<Inputs>({ mode: 'onChange', resolver: yupResolver(numberSchema) });
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setEmail(JSON.parse(JSON.stringify(localStorage.getItem('email') || '')));
-    }
-  }, []);
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setName(JSON.parse(JSON.stringify(localStorage.getItem('name') || '')));
-    }
-  }, []);
-
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     setLoading(true);
 
     const payload = {
-      email: getEmail,
-      name: getName,
+      email,
+      name,
       quantity: data.number,
 
     };
@@ -58,7 +47,7 @@ const NumberForm = () => {
       .catch(() => {
         toaster.danger('Enter a valid quantity');
       });
-    localStorage.setItem('number', data.number);
+    localStorage.setItem('number', data.number.toString());
     reset();
   };
 
@@ -73,7 +62,7 @@ const NumberForm = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextInput
               label="How many do you want?"
-              type="text"
+              type="number"
               placeholder="Eg. 2"
               {...register('number', { required: true })}
               errors={errors}

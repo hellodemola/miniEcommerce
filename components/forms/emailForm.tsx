@@ -48,7 +48,7 @@ const EmailForm = () => {
             .catch((err) => toaster?.danger(err));
         }
       })
-      .catch((err) => toaster?.danger(err));
+      .catch((err) => toaster?.danger(JSON.stringify(err)));
 
     reset();
   };
