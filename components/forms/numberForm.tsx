@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Spinner } from 'evergreen-ui';
+import { Spinner, toaster } from 'evergreen-ui';
 import CustomButton from '../common/button';
 import FormBox from '../common/formBox';
 import TextInput from '../common/input';
 import { backArrow } from '../Svg';
+import { updateOrder } from '../../services/endpoints';
 import { numberSchema } from '../../utili/validationschema/validationSchema';
 
 type Inputs = {
-  number: number,
+  // number: number,
+  number: string,
 };
 
 const NumberForm = () => {
   const [loading, setLoading] = useState(false);
+  const [getEmail, setEmail] = useState([]);
+  const [getName, setName] = useState([]);
   const router = useRouter();
 
   const {
@@ -26,10 +30,36 @@ const NumberForm = () => {
     },
   } = useForm<Inputs>({ mode: 'onChange', resolver: yupResolver(numberSchema) });
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setEmail(JSON.parse(JSON.stringify(localStorage.getItem('email') || '')));
+    }
+  }, []);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setName(JSON.parse(JSON.stringify(localStorage.getItem('name') || '')));
+    }
+  }, []);
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     setLoading(true);
-    console.log(data);
-    // localStorage.setItem('name', data.name);
+
+    const payload = {
+      email: getEmail,
+      name: getName,
+      quantity: data.number,
+
+    };
+    updateOrder(payload)
+      .then((res) => {
+        if (res.status === 200) {
+          router.push('/checkout');
+        }
+      })
+      .catch(() => {
+        toaster.danger('Enter a valid quantity');
+      });
+    localStorage.setItem('number', data.number);
     // const userEmail = localStorage.getItem('email');
     reset();
   };
