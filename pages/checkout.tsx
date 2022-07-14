@@ -33,6 +33,17 @@ const CheckoutPage = () => {
     }
   }, []);
 
+  /*
+    does user have an [active] order?
+      if yes, get the singleOrder: ( user details from the backend with get backend
+       )
+        customer can also edit quantity
+          patch / update order
+
+    Else fetch the order and user from the frontend/ localstorage
+    // add new order
+  */
+
   const unitPrice = 1000;
   const total = unitPrice * +getNumber;
 
