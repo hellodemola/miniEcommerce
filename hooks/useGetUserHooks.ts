@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 const useGetUserHooks = () => {
   const [email, setEmail] = useState([]);
   const [name, setName] = useState([]);
+  const [number, setNumber] = useState([]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -15,7 +16,13 @@ const useGetUserHooks = () => {
     }
   }, []);
 
-  return { email, name };
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setNumber(JSON.parse(JSON.stringify(localStorage.getItem('number') || '')));
+    }
+  }, []);
+
+  return { email, name, number };
 };
 
 export default useGetUserHooks;

@@ -33,6 +33,8 @@ const EmailForm = () => {
       .then((res) => {
         setLoading(true);
         if (res?.data?.message !== 'No active sales for this user') {
+          localStorage.setItem('name', res?.data?.data?.[0]?.name);
+          localStorage.setItem('number', res?.data?.data?.[0]?.quantity);
           router.push('/checkout');
         } else if (res?.data?.message === 'No active sales for this user') {
           getUserByEmail(data.email)
