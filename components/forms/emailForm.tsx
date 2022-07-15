@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { toaster, Spinner } from 'evergreen-ui';
+import { toaster } from 'evergreen-ui';
 import CustomButton from '../common/button';
 import FormBox from '../common/formBox';
 import TextInput from '../common/input';
 import { emailSchema } from '../../utili/validationschema/validationSchema';
 import { getUserByEmail, orderExists } from '../../services/endpoints';
+import FormLayout from '../layouts/formLayout';
 
 type Inputs = {
   email: string,
@@ -19,7 +20,6 @@ const EmailForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: {
       errors, isSubmitting, isValid, isDirty,
     },
@@ -40,48 +40,38 @@ const EmailForm = () => {
           getUserByEmail(data.email)
             .then((response) => {
               if (response?.data?.message === 'User does not exist') {
-                setLoading(false);
                 router.push('/verify');
               } else if (res?.data?.message !== 'User does not exist') {
-                setLoading(false);
                 router.push('/number');
               }
             })
-            .catch((err) => toaster?.danger(err));
+            .catch((err) => toaster?.danger(err?.response?.data?.message));
         }
       })
-      .catch((err) => toaster?.danger(JSON.stringify(err)));
-
-    reset();
+      .catch((err) => toaster?.danger(err?.response?.data?.message))
+      .finally(() => setLoading(false));
   };
 
   return (
-    <div>
-      {loading ? (
-        <div className="flex items-center justify-center h-80">
-          <Spinner />
-        </div>
-      )
-        : (
-          <FormBox>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextInput
-                label="Email"
-                type="email"
-                placeholder="name@enyata.com"
-                {...register('email', { required: true })}
-                errors={errors}
-              />
+    <FormLayout isLoading={loading}>
+      <FormBox>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <TextInput
+            label="Email"
+            type="email"
+            placeholder="name@enyata.com"
+            {...register('email', { required: true })}
+            errors={errors}
+          />
 
-              <CustomButton
-                disable={!isValid || !isDirty || isSubmitting}
-              >
-                I want some
-              </CustomButton>
-            </form>
-          </FormBox>
-        )}
-    </div>
+          <CustomButton
+            disable={!isValid || !isDirty || isSubmitting}
+          >
+            I want some
+          </CustomButton>
+        </form>
+      </FormBox>
+    </FormLayout>
   );
 };
 
