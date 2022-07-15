@@ -22,8 +22,6 @@ export const AddOrder = async (payload) => apiInstance({
   data: payload,
 });
 
-export const getSingleOrder = async (email) => apiInstance.get(`orders/active?email=${email}`);
-
 export const updateOrder = async (payload) => apiInstance(
   {
     method: 'PATCH',
