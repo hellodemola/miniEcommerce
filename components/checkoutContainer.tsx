@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import moment from 'moment';
-import { toaster, Spinner } from 'evergreen-ui';
+import { toaster } from 'evergreen-ui';
 import { QueryDeliveryDate } from '../services/useQuery';
 import { calenderIcon, editIcon } from './Svg';
 import { AddOrder, updateOrder } from '../services/endpoints';
 import useGetUserHooks from '../hooks/useGetUserHooks';
+import FormLayout from './layouts/formLayout';
 
 const CheckoutContainer = () => {
   const router = useRouter();
@@ -74,78 +75,73 @@ const CheckoutContainer = () => {
   };
   return (
     <div>
-      {isLoading ? (
-        <div className="flex items-center justify-center h-80">
-          <Spinner />
-        </div>
-      )
-        : (
-          <div className="mt-9 ml-3">
-            <div className="flex">
-              {calenderIcon}
-              <div className="ml-3 text-2xl font-thin mt-3">
-                Delivery:
-                {' '}
-                <span className="font-medium text-black">
-                  {moment(date).format('dddd, MMMM Do, YYYY')}
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-9">
-              <p className="text-dark font-normal text-2xl">Email</p>
-              <p className="text-4xl font-bold text-black">{email}</p>
-
-            </div>
-
-            <div className="mt-14">
-              <p className="text-dark font-normal text-2xl">Name</p>
-              <p className="text-4xl font-bold text-black">{name}</p>
-            </div>
-
-            <div className="mt-14 flex justify-between">
-              <div className="">
-                <p className="text-dark font-normal text-2xl">How many nuts?</p>
-                <div style={style}>
-                  <input min="1" className="text-4xl font-bold text-black outline-none" onChange={handleUpdateChange} onMouseUp={saveUpdateQuantity} type="number" defaultValue={number} />
-                </div>
-              </div>
-
-              <div className="ml-28 cursor-pointer" aria-hidden="true" onClick={changeStyle}>
-                {editIcon}
-              </div>
-            </div>
-
-            <div className="mt-14 flex justify-end">
-              <p className="text-4xl font-bold text-black">{quantityValue ? newTotal : total}</p>
-            </div>
-
-            <div className="flex mt-5 pb-48">
-              {quantityValue ? (
-                <button
-                  type="submit"
-                  className="bg-violet text-white h-15 w-77 font-normal
-        text-2xl ml-6"
-                  onClick={UpdateOrderQuantity}
-                >
-                  Update Order
-
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  className="bg-violet text-white h-15 w-77 font-normal
-        text-2xl ml-6"
-                  onClick={onSubmit}
-                >
-                  Pay on Delivery
-
-                </button>
-              )}
-
+      <FormLayout isLoading={isLoading}>
+        <div className="mt-9 ml-0 p-8 sm:p-0 sm:ml-3">
+          <div className="flex">
+            {calenderIcon}
+            <div className="ml-3 text-lg sm:text-2xl font-thin mt-3">
+              Delivery:
+              {' '}
+              <span className="font-medium text-black">
+                {moment(date).format('dddd, MMMM Do, YYYY')}
+              </span>
             </div>
           </div>
-        )}
+
+          <div className="mt-9">
+            <p className="text-dark font-normal text-lg sm:text-2xl">Email</p>
+            <p className="text-2xl sm:text-4xl font-bold text-black">{email}</p>
+
+          </div>
+
+          <div className="mt-14">
+            <p className="text-dark font-normal text-lg sm:text-2xl">Name</p>
+            <p className="text-2xl sm:text-4xl font-bold text-black">{name}</p>
+          </div>
+
+          <div className="mt-14 flex justify-between">
+            <div className="">
+              <p className="text-dark font-normal text-lg sm:text-2xl">How many nuts?</p>
+              <div style={style}>
+                <input min="1" className="text-2xl sm:text-4xl font-bold text-black outline-none" onChange={handleUpdateChange} onMouseUp={saveUpdateQuantity} type="number" defaultValue={number} />
+              </div>
+            </div>
+
+            <div className="ml-0 sm:ml-28 cursor-pointer" aria-hidden="true" onClick={changeStyle}>
+              {editIcon}
+            </div>
+          </div>
+
+          <div className="mt-14 flex justify-end">
+            <p className="text-4xl font-bold text-black">{quantityValue ? newTotal : total}</p>
+          </div>
+
+          <div className="flex mt-5 pb-48">
+            {quantityValue ? (
+              <button
+                type="submit"
+                className="bg-violet text-white h-15 w-77 font-normal
+                text-lg sm:text-2xl ml-6"
+                onClick={UpdateOrderQuantity}
+              >
+                Update Order
+
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="bg-violet text-white h-15 w-77 font-normal
+                text-lg sm:text-2xl ml-6"
+                onClick={onSubmit}
+              >
+                Pay on Delivery
+
+              </button>
+            )}
+
+          </div>
+        </div>
+      </FormLayout>
     </div>
   );
 };

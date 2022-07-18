@@ -12,7 +12,7 @@ const Progress: React.FC<Props> = () => {
   const router = useRouter();
   const currentPath = router.pathname;
   return (
-    <div className="flex items-center">
+    <div className="flex items-center justify-center">
       <div className="ml-2">{currentPath === '/' ? inProgress : completed}</div>
       <div>{startedLine}</div>
       <div className="-ml-1">{currentPath === '/verify' ? inProgress : currentPath === '/number' ? completed : currentPath === '/checkout' ? completed : notStarted}</div>

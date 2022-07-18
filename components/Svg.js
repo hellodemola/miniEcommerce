@@ -12,39 +12,39 @@ export const calenderIcon = (
 );
 
 export const lightRoundShape = (
-  <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg className="w-9 sm:w-full" width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="32.8668" cy="32.1331" r="29.1331" stroke="#D1D5DB" strokeWidth="6" />
   </svg>
 );
 
 export const startedLine = (
-  <svg width="86" height="4" viewBox="0 0 86 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg className="w-12 sm:w-full" width="86" height="4" viewBox="0 0 86 4" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="0.199463" y="0.314209" width="84.8798" height="3.03142" fill="#4F46E5" />
   </svg>
 );
 
 export const notStartedLine = (
-  <svg width="86" height="4" viewBox="0 0 86 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg className="w-12 sm:w-full" width="86" height="4" viewBox="0 0 86 4" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="0.854004" y="0.314209" width="84.8798" height="3.03142" fill="#D1D5DB" />
   </svg>
 );
 
 export const inProgress = (
-  <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg className="w-9 sm:w-full" width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="32.1331" cy="32.1331" r="29.1331" stroke="#4F46E5" strokeWidth="6" />
     <circle cx="32.133" cy="32.1331" r="10.9131" fill="#4F46E5" />
   </svg>
 );
 
 export const notStarted = (
-  <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg className="w-9 sm:w-full" width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="32.7874" cy="32.1331" r="29.1331" stroke="#9CA3AF" strokeWidth="6" />
     <circle cx="32.7873" cy="32.1331" r="10.9131" fill="#D1D5DB" />
   </svg>
 );
 
 export const completed = (
-  <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg className="w-9 sm:w-full" width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="32.1331" cy="32.1331" r="32.1331" fill="#4F46E5" />
     <path d="M21.1696 33.6993L27.4345 39.9642L43.0968 24.3019" stroke="white" strokeWidth="6.2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
