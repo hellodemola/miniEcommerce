@@ -5,7 +5,7 @@ type Props = {
 };
 
 const FormBox: React.FC<Props> = ({ children }) => (
-  <div className="w-128 h-90 bg-white rounded-xl shadow-xl pl-14 pr-16 pt-24 mt-16">
+  <div className="w-full h-screen sm:h-90 sm:pt-24 bg-white rounded-xl shadow-xl pl-14 pr-16 pt-4 mt-16 sm:w-128">
     <div>{children}</div>
   </div>
 );
